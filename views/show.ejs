@@ -1,0 +1,23 @@
+<%- include("partials/header") %>
+
+<div class="ui main text container segment">
+	<div class="ui huge header"><%= blog.title %></div>
+	<div class="ui top attached">
+		<div class="item">
+			<img class="ui centered rounded image" src="<%= blog.image %>">
+	        <div class="content">
+				<span><%= blog.created.toDateString() %></span><!-- automatic generated date because we switch as default -->
+			</div>
+			<div class="description">
+				<p><%- blog.body %></p><!-- i change "=" to "-" to type html in post text but this don't work -->
+			</div>
+			<a class="ui orange basic button" href="/blogs/<%= blog._id %>/edit">Edit</a>
+			          <!-- /blogs/:id -->
+			<form id="delete" action="/blogs/<%= blog._id %>?_method=DELETE" method="POST"><!-- blog. is what we using to find data in database -->           <button class="ui red basic button">Delete</button><!-- send form, send post request -->
+			</form>
+		</div>
+	</div>
+	
+</div>
+
+<%- include("partials/footer") %>
